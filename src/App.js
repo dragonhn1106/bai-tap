@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       name: "lalalallalalalalalalalalalalal",
-      color: "",
+      color: "red",
       fontSize: 18
     };
   }
@@ -29,24 +29,21 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <Header 
-          colorStyle={this.state.color} 
-          sizeFont={this.state.fontSize}
-          >
-            {this.state.name}
-          </Header>
+          <Header colorStyle={this.state.color} sizeFont={this.state.fontSize}>
+            {this.state.name}{" "}
+          </Header>{" "}
           <Contents
             colorGetSet={color => {
               this.colorGetSet(color);
             }}
-          />
+          />{" "}
           <Footer
             showTxtSizeFont={this.state.fontSize}
             fontSizeGetValue={e => {
               this.fontSizeGetSet(e);
             }}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
       </div>
     );
   }

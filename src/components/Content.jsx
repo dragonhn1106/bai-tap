@@ -4,37 +4,32 @@ class Contents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      red: "red",
-      blue: "blue",
-      green: "green"
+      color: ["red", "blue", "green"]
     };
   }
   ColorRedOnclick = selectColor => {
     return this.props.colorGetSet(selectColor);
   };
+  showColor = color => {
+    return {
+      backgroundColor: color,
+      height: "108px"
+    };
+  };
   render() {
-    return (
-      <div className="row Color">
+    var elemColor = this.state.color.map((value, index) => {
+      return (
         <div
-          className="col-4 red"
+          className="col-4 "
+          key={index}
+          style={this.showColor(value)}
           onClick={() => {
-            this.ColorRedOnclick(this.state.red);
+            this.ColorRedOnclick(value);
           }}
         />
-        <div
-          className="col-4 blue"
-          onClick={() => {
-            this.ColorRedOnclick(this.state.blue);
-          }}
-        />
-        <div
-          className="col-4 green"
-          onClick={() => {
-            this.ColorRedOnclick(this.state.green);
-          }}
-        />
-      </div>
-    );
+      );
+    });
+    return <div className="row Color">{elemColor}</div>;
   }
 }
 
